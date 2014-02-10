@@ -63,5 +63,8 @@ def make_aggregated_pages(app):
 
         context["archive_title"] = UIStr.BLOG_ARCHIVE
 
+        old_add_permalinks = app.builder.add_permalinks
+        app.builder.add_permalinks = False
         yield (pagename, context, "aggregated.html")
+        app.builder.add_permalinks = old_add_permalinks
 
